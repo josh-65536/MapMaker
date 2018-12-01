@@ -1,6 +1,4 @@
-﻿using System;
-using MapMaker.DocumentModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MapMaker.Tests.DocumentModel
 {
@@ -11,7 +9,7 @@ namespace MapMaker.Tests.DocumentModel
         public void Undo_IntValue()
         {
             var document = new SampleDocument();
-            var view = (Revision<int>.View) document.Medium.IntValue;
+            var view = document.Medium.IntValue.AsView();
 
             view.CheckIn(1000);
             view.CheckIn(2000);

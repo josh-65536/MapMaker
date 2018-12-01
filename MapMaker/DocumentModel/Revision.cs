@@ -11,7 +11,7 @@ namespace MapMaker.DocumentModel
             _versionController = versionController;
         }
 
-        public static implicit operator View(Revision<T> revision) => new View(revision);
+        public View AsView() => new View(this);
 
         public ref struct View
         {
