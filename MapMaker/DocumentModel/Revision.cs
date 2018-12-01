@@ -11,13 +11,13 @@ namespace MapMaker.DocumentModel
             _versionController = versionController;
         }
 
-        public T Value
+        public static implicit operator T(Revision<T> revision) => revision._currentValue;
+
+        public void CheckIn(T newValue)
         {
-            get => _currentValue;
-            set =>
-                _versionController.ExecuteCommand(
-                    new CheckInCommand<T>(this, _currentValue, value)
-                );
+            _versionController.ExecuteCommand(
+                new CheckInCommand<T>(this, _currentValue, value)
+            );
         }
     }
 }

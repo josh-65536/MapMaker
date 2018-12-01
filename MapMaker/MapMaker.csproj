@@ -50,7 +50,7 @@
     <Compile Include="Assets\AssetLoader.cs" />
     <Compile Include="Assets\Tag.cs" />
     <Compile Include="DocumentModel\CheckInCommand.cs" />
-    <Compile Include="DocumentModel\Command.cs" />
+    <Compile Include="DocumentModel\ICommand.cs" />
     <Compile Include="DocumentModel\LevelDocument.cs" />
     <Compile Include="DocumentModel\EditMode.cs" />
     <Compile Include="DocumentModel\EditModeEventArgs.cs" />
