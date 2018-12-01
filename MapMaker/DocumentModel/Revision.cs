@@ -16,7 +16,7 @@ namespace MapMaker.DocumentModel
         public void CheckIn(T newValue)
         {
             _versionController.ExecuteCommand(
-                new CheckInCommand<T>(this, _currentValue, value)
+                new CheckInCommand<T>(this, _currentValue, newValue)
             );
         }
     }
