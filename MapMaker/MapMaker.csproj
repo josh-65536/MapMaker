@@ -49,10 +49,15 @@
   <ItemGroup>
     <Compile Include="Assets\AssetLoader.cs" />
     <Compile Include="Assets\Tag.cs" />
-    <Compile Include="DocumentModel\Document.cs" />
+    <Compile Include="DocumentModel\CheckInCommand.cs" />
+    <Compile Include="DocumentModel\Command.cs" />
+    <Compile Include="DocumentModel\LevelDocument.cs" />
     <Compile Include="DocumentModel\EditMode.cs" />
     <Compile Include="DocumentModel\EditModeEventArgs.cs" />
     <Compile Include="DocumentModel\FastBitmap.cs" />
+    <Compile Include="DocumentModel\IDocument.cs" />
+    <Compile Include="DocumentModel\IVersionController.cs" />
+    <Compile Include="DocumentModel\Revision.cs" />
     <Compile Include="DocumentModel\Level.cs" />
     <Compile Include="DocumentModel\LevelEventArgs.cs" />
     <Compile Include="DocumentModel\SelectionException.cs" />

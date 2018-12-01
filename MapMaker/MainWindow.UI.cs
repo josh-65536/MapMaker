@@ -31,7 +31,7 @@ namespace MapMaker
         private MenuItem _menuHelp;
         private MainMenu _mainMenu;
 
-        private void InitializeComponent(Document document)
+        private void InitializeComponent(LevelDocument document)
         {
             _mainSplitContainer = new SplitContainer();
             _mainSplitContainer.BeginInit();

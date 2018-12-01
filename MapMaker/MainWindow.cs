@@ -5,9 +5,9 @@ namespace MapMaker
 {
     public partial class MainWindow
     {
-        private readonly Document _document;
+        private readonly LevelDocument _document;
 
-        public MainWindow(Document document)
+        public MainWindow(LevelDocument document)
         {
             InitializeComponent(document);
 

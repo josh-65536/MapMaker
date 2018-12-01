@@ -10,7 +10,7 @@ namespace MapMaker
 {
     public class LevelView : Control
     {
-        private readonly Document _document;
+        private readonly LevelDocument _document;
 
         private int _tileX;
         private int _tileY;
@@ -19,7 +19,7 @@ namespace MapMaker
         private Bitmap _framebuffer;
         private FastBitmap _compositeOutput;
 
-        public LevelView(Document document)
+        public LevelView(LevelDocument document)
         {
             _document = document;
             document.ChangeMap += (o, e) => Invalidate();
@@ -34,7 +34,7 @@ namespace MapMaker
         {
             base.OnPaint(e);
 
-            var level = _document.Level;
+            var level = _document.Medium;
             var levelWidth = level.Width;
             var levelHeight = level.Height;
             var tileImages = level.Tileset.Tiles;
@@ -109,9 +109,9 @@ namespace MapMaker
             warpBrush.Dispose();
         }
 
-        private int CursorToTileX(int cursorX) => cursorX / _document.Level.Tileset.TileWidth;
+        private int CursorToTileX(int cursorX) => cursorX / _document.Medium.Tileset.TileWidth;
 
-        private int CursorToTileY(int cursorY) => cursorY / _document.Level.Tileset.TileHeight;
+        private int CursorToTileY(int cursorY) => cursorY / _document.Medium.Tileset.TileHeight;
 
         private void TileMode_MouseEnter(object sender, EventArgs e)
         {
@@ -128,7 +128,7 @@ namespace MapMaker
         {
             if (e.Button == MouseButtons.Left)
             {
-                _document.Level.SetTile(_tileX, _tileY, 100);
+                _document.Medium.SetTile(_tileX, _tileY, 100);
                 Invalidate();
             }
         }
@@ -139,7 +139,7 @@ namespace MapMaker
             _tileY = CursorToTileY(e.Y);
 
             if (e.Button == MouseButtons.Left)
-                _document.Level.SetTile(_tileX, _tileY, 100);
+                _document.Medium.SetTile(_tileX, _tileY, 100);
 
             Invalidate();
         }
