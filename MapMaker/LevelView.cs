@@ -88,6 +88,7 @@ namespace MapMaker
             var warpBrush = new SolidBrush(Color.FromArgb(127, 0, 255, 0));
             var selectionBrush = new SolidBrush(Color.FromArgb(127, 255, 255, 255));
 
+#if false
             foreach (var w in level.Warps)
             {
                 var x = w.X * tileWidth;
@@ -97,6 +98,7 @@ namespace MapMaker
 
                 g.FillRectangle(warpBrush, x, y, width, height);
             }
+#endif
 
             if (_isInBounds)
             {
