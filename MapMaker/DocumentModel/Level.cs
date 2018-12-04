@@ -35,60 +35,6 @@ namespace MapMaker.DocumentModel
             _warps = new List<Warp>();
         }
 
-        private Level(Stream stream)
-        {
-            var reader = new BinaryReader(stream);
-
-            Width = reader.ReadByte() + 1;
-            Height = reader.ReadByte() + 1;
-
-            var assetOffset = reader.ReadInt32();
-            var mapOffset = reader.ReadInt32();
-            var warpsOffset = reader.ReadInt32();
-
-            reader.BaseStream.Position = assetOffset;
-            Tileset = Tileset.Load(reader.ReadString());
-            MusicPath = reader.ReadString();
-
-            reader.BaseStream.Position = mapOffset;
-            _map = new int[Width * Height];
-            for (var i = 0; i < _map.Length; ++i)
-                _map[i] = reader.ReadUInt16();
-
-            _warps = new List<Warp>();
-            if (warpsOffset != 0)
-            {
-                reader.BaseStream.Position = warpsOffset;
-
-                var warpCount = reader.ReadInt16();
-
-                while (warpCount-- > 0)
-                {
-                    var x = reader.ReadInt16();
-                    var y = reader.ReadInt16();
-                    var exitX = reader.ReadInt16();
-                    var exitY = reader.ReadInt16();
-                    var width = reader.ReadInt16();
-                    var height = reader.ReadInt16();
-
-                    var warp = new Warp(reader.ReadString());
-                    warp.X = x;
-                    warp.Y = y;
-                    warp.ExitX = exitX;
-                    warp.ExitY = exitY;
-                    warp.Width = width;
-                    warp.Height = height;
-                }
-            }
-        }
-
-        public static Level Load(string filePath) => new Level(AssetLoader.LoadStream(filePath));
-
-        public static void Save(string filePath, Level level)
-        {
-            throw new NotImplementedException();
-        }
-
         public int GetTile(int x, int y)
         {
             if (x < 0 || y < 0 || x >= Width || y >= Height)
